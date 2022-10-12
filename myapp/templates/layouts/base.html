@@ -1,122 +1,77 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="{%static '/css/main.css'%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg " style="background-color: #ec6110;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'index'%}">PettyQuest 2.0</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
-          <div class="collapse navbar-collapse divmenu" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav menu">
-              <li>
-                <a class="nav-link"  href="{% url 'catalogoMas'%}" style="color: black;">Ver mascotas</a>
-              </li>
-              <li>
-                <a class="nav-link"  href="" style="color: black;">Ver mascotas perdidas</a>
-              </li>
-              <li>
-                <a class="nav-link"  href="" style="color: black;">Solicitudes de adopcion</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
-                  {% if user.is_authenticated %}
-                  Usuario
-                  {% else %}
-                  Usuario
-                  {% endif %}
+    <div style="background-color: #D9D9D9; width: 100%;">
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <img src="" alt="imagen" class="me-2">
+                    <span class="fs-4">PettyQuest</span>
                 </a>
-                {% if user.is_authenticated %}
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-primary position-relative">
-                    Mi perfil 
-                  </button></a></li>
-                  <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-primary position-relative">
-                    Mensajes <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden">unread messages</span></span>
-                  </button></a></li>
-                  <li><a class="dropdown-item" href="#"><button type="button" class="btn btn-primary position-relative">
-                   Subir mascota
-                  </button></a></li>
-                  <li><a class="dropdown-item" href="{% url 'logout'%}"><button type="button" class="btn btn-primary position-relative">
-                    Cerrar sesion
-                   </button></a></li>
-                </ul>
-                {% else %}
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{% url 'inicioSesion'%}"><button type="button" class="btn btn-primary position-relative">
-                    Iniciar sesion
-                   </button></a></li>
-                   <li><a class="dropdown-item" href="{% url 'registro'%}"><button type="button" class="btn btn-primary position-relative">
-                     Registrar usuario
-                    </button></a></li>
+
+                <ul class="nav">
                   
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Ver mascotas</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Ayuda</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-dark">Acerca de</a></li>                                   
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Usuario
+                      </a>
+                      <ul class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+                        <li><a class="dropdown-item" href="#">Ver mensajes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'logout'%}">Cerrar sesion</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'inicioSesion'%}">Iniciar sesion</a></li>
+                        <li><a class="dropdown-item" href="{% url 'registro'%}">Registrar usuario</a></li>
+                        {% endif %}
+                      </ul>
+                    </li>                            
                 </ul>
-                {% endif %}
-              </li>
-            </ul>
-          </div>
+            </header>
         </div>
-      </nav>
+    </div>
+
     {% block content %}
     {% endblock %}
 
-  
+    <div style="background-color: #969393; width: 100%;">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0  text-decoration-none lh-1">
+                        <img src="" alt="imagen" class="me-2">
+                    </a>
+                    <span class="mb-3 mb-md-0 text-light">© 2022 PettyQuest, Inc</span>
+                </div>
 
-<!-- Modal registro -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Registro</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-          {% csrf_token%}
-          {{formUsuario.as_p}}
-          <p style="color: red;">{{error}}</p>
-          <button>Save</button>
-        </form>
-      </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-facebook fs-5"></i></a></li>
+                    <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-twitter fs-5"></i></a></li>
+                    <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-instagram fs-5"></i></a></li>
+                </ul>
+            </footer>
+        </div>
     </div>
-  </div>
-</div>
 
 
-<!-- Modal inicio -->
-<div class="modal fade" id="modalInicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-          {% csrf_token%}
-          {{formInicio.as_p}}
-          <p style="color: red;">{{error}}</p>
-          <button>Save</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

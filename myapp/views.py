@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import CrearUsuario, InicioSesion, RegistroForm
@@ -14,9 +15,7 @@ def index(request):
         if request.method == 'GET':
                 title = 'Adopcion de mascotas'
                 return render(request, 'index.html', {
-                'title': title,
-                'formUsuario': CrearUsuario,
-                'formInicio' : InicioSesion 
+                'title': title
                 })
         else:   
                 print("Entro al POST")
@@ -35,8 +34,7 @@ def registro(request):
                 title = 'Registro de usuario'
                 return render(request, 'usuario/registro.html', {
                 'title': title,
-                'formRegistro': RegistroForm,
-                'formInicio' : InicioSesion 
+                'formRegistro': RegistroForm
                 })
         else : 
                 if request.POST['password1'] == request.POST['password2']:
@@ -48,14 +46,12 @@ def registro(request):
                                 return redirect('index')
                         except IntegrityError:
                                 return render(request, 'usuario/registro.html', {
-                                'formRegistro': RegistroForm,
-                                'formInicio' : InicioSesion,
+                                'formRegistro': RegistroForm,                             
                                 'error2': 'Username already exist'
                                 })
                 else:
                         return render(request, 'usuario/registro.html', {
                                 'formRegistro': RegistroForm,
-                                'formInicio' : InicioSesion,
                                 'error2': 'Password do not match'
                         })
 
@@ -79,3 +75,9 @@ def signin(request):
         else  :
              login(request, user)
              return redirect('index')   
+
+def registroMascota(request):
+        if request.method == 'GET':
+                return render(request , 'mascotas/RegistroMascota.html',{
+                'title' : 'Registro de mascota'
+    })
