@@ -1,4 +1,3 @@
-from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import CrearUsuario, InicioSesion, RegistroForm
@@ -15,7 +14,9 @@ def index(request):
         if request.method == 'GET':
                 title = 'Adopcion de mascotas'
                 return render(request, 'index.html', {
-                'title': title
+                'title': title,
+                'formUsuario': CrearUsuario,
+                'formInicio' : InicioSesion 
                 })
         else:   
                 print("Entro al POST")
@@ -25,7 +26,7 @@ def index(request):
 
 def catalogo(request):
     title = 'Catalogo de mascotas'
-    return render(request , 'mascotas/catalogoMascotas.html',{
+    return render(request , 'mascota/catalogoMascotas.html',{
             'title' : title
     })
 
@@ -34,7 +35,8 @@ def registro(request):
                 title = 'Registro de usuario'
                 return render(request, 'usuario/registro.html', {
                 'title': title,
-                'formRegistro': RegistroForm
+                'formRegistro': RegistroForm,
+                'formInicio' : InicioSesion 
                 })
         else : 
                 if request.POST['password1'] == request.POST['password2']:
@@ -46,12 +48,14 @@ def registro(request):
                                 return redirect('index')
                         except IntegrityError:
                                 return render(request, 'usuario/registro.html', {
-                                'formRegistro': RegistroForm,                             
+                                'formRegistro': RegistroForm,
+                                'formInicio' : InicioSesion,
                                 'error2': 'Username already exist'
                                 })
                 else:
                         return render(request, 'usuario/registro.html', {
                                 'formRegistro': RegistroForm,
+                                'formInicio' : InicioSesion,
                                 'error2': 'Password do not match'
                         })
 
@@ -76,8 +80,10 @@ def signin(request):
              login(request, user)
              return redirect('index')   
 
-def registroMascota(request):
+def registromascota(request):
         if request.method == 'GET':
-                return render(request , 'mascotas/RegistroMascota.html',{
-                'title' : 'Registro de mascota'
+                 return render(request , 'mascota/registroMascota.html',{
+                'title' : "Registrar mascota"
     })
+      
+                 
