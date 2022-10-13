@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import CrearUsuario, InicioSesion, RegistroForm, buscadorContactoMensajeria, enviarMensaje
-from .models import Usuario
 from django.contrib.auth.models import User 
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
