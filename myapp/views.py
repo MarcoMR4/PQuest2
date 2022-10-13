@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import CrearUsuario, InicioSesion, RegistroForm, buscadorContactoMensajeria, enviarMensaje
+from .forms import CrearUsuario, InicioSesion, RegistroForm
 from .models import Usuario
 from django.contrib.auth.models import User 
 from django.views.generic import CreateView
@@ -86,10 +86,4 @@ def registromascota(request):
                 'title' : "Registrar mascota"
     })
       
-def mensajes(request):
-    title = 'Mensajes'
-    return render(request , 'mensajeria/mensajes.html',{
-            'title' : title,
-            'formBuscar' : buscadorContactoMensajeria,
-            'formEnviar': enviarMensaje
-    })        
+                 
