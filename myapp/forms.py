@@ -44,3 +44,25 @@ class CrearUsuario(forms.Form):
 class InicioSesion(forms.Form):
     correoElectronico = forms.EmailField(label="Correo electronico", max_length=45)
     contraseña = forms.CharField(label="Contraseña", max_length=45, min_length=8)
+
+
+class buscadorContactoMensajeria(forms.Form):
+    buscador = forms.CharField(
+        widget= forms.Textarea(
+            attrs={
+                'placeholder':'Nombre de contacto',
+                'style':'resize:none;', 'rows':'1'
+            }
+        )
+    )
+
+class enviarMensaje(forms.Form):
+    enviar = forms.CharField(
+        widget= forms.Textarea(
+            attrs={
+                'placeholder':'Escribe aquÃ­ tu mensaje',
+                'style':'resize:none;', 'name':'mensajeContacto',
+                'id':'mensajeContacto', 'rows':'1', 'cols':'10'
+            }
+        )
+    )

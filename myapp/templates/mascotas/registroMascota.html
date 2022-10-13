@@ -15,13 +15,13 @@
                 <div class="row">
                     <div class="input-group col-5">
                         <input type="file" class="form-control" id="inputGroupFile04"
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="fotomas">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-3"></div>
                     <div class="col-5" style="height: 20rem; width: 15rem; border: 1px solid black;">
-                        <img src="" alt="imagen" class="" style="height: 20rem; width: 15rem;">
+                        <img src="" alt="imagen" class="" style="height: 20rem; width: 15rem;" id="fotomas2">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="mb-3 row">
                     <label for="masnombre" class="col-sm-3 col-form-label">Nombre:</label>
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control" id="masnombre" required>
+                        <input type="text" readonly class="form-control" id="masnombre" required name="masnombre">
                     </div>
                 </div>
                 <hr>
@@ -46,28 +46,45 @@
                 </div>
                 <hr>
                 <div class="mb-3 row">
+                    <label for="idRazaAnimal" class="col-sm-3 col-form-label">Tipo de animal:</label>
+                    <div class="col-sm-9">
+                        <select class="form-select" aria-label="Default select example" name="idRazaAnimal"
+                        required>
+                        <option selected>Seleccione la raza animal de la mascota...</option>
+                        <option value="Pequeño">Perro</option>
+                        <option value="Mediano">Gato</option>
+                        <option value="Grande">Otro</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
                     <label for="razamas" class="col-sm-3 col-form-label">Raza:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="razamas" required>
+                        <input type="text" class="form-control" id="razamas" required name="razamas">
                     </div>
                 </div>
                 <hr>
                 <div class="mb-3 row">
-                    <label for="colormas" class="col-sm-3 col-form-label">Personalidad:</label>
+                    <label for="personalidad" class="col-sm-3 col-form-label">Personalidad:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="colormas">
+                        <input type="text" class="form-control" id="personalidad" name="personalidad">
                     </div>
                 </div>
                 <hr>
                 <div class="mb-3 row">
-                    <label for="colormas" class="col-sm-3 col-form-label">Edad:</label>
+                    <label for="edadmas" class="col-sm-3 col-form-label">Edad:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="colormas">
+                        <select class="form-select" aria-label="Default select example" name="edadmas" required>
+                            <option selected>Seleccione una edad aproximada...</option>
+                            <option value="Cachorro">Cachorro</option>                          
+                            <option value="Adulto">Adulto</option>
+                            <option value="Anciano">Anciano</option>
+                        </select>
                     </div>
                 </div>
                 <hr>
                 <div class="mb-3 row">
-                    <label for="colormas" class="col-sm-3 col-form-label">Tamaño:</label>
+                    <label for="tamano" class="col-sm-3 col-form-label">Tamaño:</label>
                     <div class="col-sm-9">
                         <select class="form-select" aria-label="Default select example" name="tamano" required>
                             <option selected>Seleccione el tamaño...</option>
@@ -79,16 +96,16 @@
                 </div>
                 <hr>
                 <div class="mb-3 row">
-                    <label for="colormas" class="col-sm-3 col-form-label">Ubicacion:</label>
+                    <label for="ubicacion" class="col-sm-3 col-form-label">Ubicacion:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="colormas">
+                        <input type="text" class="form-control" id="ubicacion" name="ubicacion">
                     </div>
                 </div>
                 <hr>
                 <div class="mb-3 row">
-                    <label for="colormas" class="col-sm-3 col-form-label">Historial clinico:</label>
+                    <label for="historial" class="col-sm-3 col-form-label">Historial clinico:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="colormas">
+                        <input type="text" class="form-control" id="historial" name="historial">
                     </div>
                 </div>
                 <hr>
@@ -99,10 +116,16 @@
             <div class="col-6">
                 <div class="row">Subir video de la mascota</div>
                 <div class="row">
-                    <input type="file" class="form-control" id="inputGroupFile04"
-                    aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <input type="file" class="form-control" id="video"
+                    aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="video">
                 </div>
-                
+                <div class="row mt-1">
+                    <video width="300" height="240" controls id="video2">
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                      </video>
+                </div>
             </div>
         </div>
     </form>
