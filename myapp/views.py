@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import CrearUsuario, InicioSesion, RegistroForm
-from .models import Usuario
+from .forms import CrearUsuario, InicioSesion, RegistroForm, buscadorContactoMensajeria, enviarMensaje
+from .models import Usuario , Mascota
 from django.contrib.auth.models import User 
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
@@ -79,3 +79,21 @@ def signin(request):
         else  :
              login(request, user)
              return redirect('index')   
+
+def registromascota(request):
+        if request.method == 'GET':
+                 return render(request , 'mascotas/registroMascota.html',{
+                'title' : "Registrar mascota"
+    })
+        else :
+                print("Entro al POST")
+                Mascota.objects.create(nombre=request.POST['masnombre'], genero=request.POST['genero'], tipo=request.POST['idRazaAnimal'],raza=request.POST['razamas'],personalidad=request.POST['personalidad'],edad=request.POST['edadmas'],tamaño=request.POST['tamano'],ubicacion=request.POST['ubicacion'],historial=request.POST['historial'],foto=request.POST['fotomas'],video=request.POST['video'])
+      
+
+def mensajes(request):
+    title = 'Mensajes'
+    return render(request , 'mensajeria/mensajes.html',{
+            'title' : title,
+            'formBuscar' : buscadorContactoMensajeria,
+            'formEnviar': enviarMensaje
+    }) 
